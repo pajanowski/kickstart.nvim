@@ -150,7 +150,7 @@ examples of adding popularly requested plugins.
     to maintain multiple configurations. For example, you can install the kickstart
     configuration in `~/.config/nvim-kickstart` and create an alias:
     ```
-    alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
+    alias kvim='NVIM_APPNAME="nvim-kickstart" nvim'
     ```
     When you run Neovim using `nvim-kickstart` alias it will use the alternative
     config directory and the matching local directory

@@ -158,9 +158,10 @@ do
   vim.o.list = true
   vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
-  vim.opt.tabstop = 1
-  vim.opt.shiftwidth = 1
+  vim.opt.tabstop = 2
+  vim.opt.shiftwidth = 2
   vim.opt.expandtab = true
+  
 
   -- Preview substitutions live, as you type!
   vim.o.inccommand = 'split'
@@ -520,8 +521,8 @@ do
 
   vim.pack.add { gh 'folke/flash.nvim' }
   require('flash').setup{}
-  vim.keymap.set({ "n", "o", "t" }, "s", function() require("flash").jump() end, { desc = "Flash" })
-  vim.keymap.set({ "n", "o", "t" }, "S", function() require("flash").treesitter() end, { desc = "Flash Treesitter" })
+  vim.keymap.set({ "n", "o", }, "s", function() require("flash").jump() end, { desc = "Flash" })
+  vim.keymap.set({ "n", "o", }, "S", function() require("flash").treesitter() end, { desc = "Flash Treesitter" })
   vim.keymap.set("o", "r", function() require("flash").remote() end, { desc = "Remote Flash" })
   vim.keymap.set({ "o", "x" }, "R", function()
     require("flash").treesitter({ direction = require("flash").direction.next })
@@ -777,6 +778,7 @@ do
     pyright = {},
     tsc = {},
     ts_ls = {},
+    terraformls = {},
     svelte = {
     capabilities = {
       -- Hint to the server that we support workspace editing
@@ -1071,7 +1073,8 @@ do
   require 'kickstart.plugins.indent_line'
   -- require 'kickstart.plugins.lint'
   -- require 'kickstart.plugins.autopairs'
-  require 'kickstart.plugins.neo-tree'
+  -- require 'kickstart.plugins.neo-tree'
+  require 'kickstart.plugins.snacks'
 
   -- NOTE: You can add your own plugins, configuration, etc. in `lua/custom/plugins/*.lua`.
   --
