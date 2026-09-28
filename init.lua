@@ -515,6 +515,16 @@ do
   vim.pack.add { gh 'NeogitOrg/neogit' }
   require('neogit').setup{}
   vim.keymap.set("n", "<leader>gg", "<cmd>Neogit<cr>", { desc = "Open Neogit UI" })
+
+  vim.pack.add { gh 'folke/flash.nvim' }
+  require('flash').setup{}
+  vim.keymap.set({ "n", "o", "t" }, "s", function() require("flash").jump() end, { desc = "Flash" })
+  vim.keymap.set({ "n", "o", "t" }, "S", function() require("flash").treesitter() end, { desc = "Flash Treesitter" })
+  vim.keymap.set("o", "r", function() require("flash").remote() end, { desc = "Remote Flash" })
+  vim.keymap.set({ "o", "x" }, "R", function()
+    require("flash").treesitter({ direction = require("flash").direction.next })
+  end, { desc = "Flash Treesitter Forward" })
+
 end
 
 -- ============================================================
@@ -1056,7 +1066,7 @@ do
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   require 'kickstart.plugins.debug'
-  -- require 'kickstart.plugins.indent_line'
+  require 'kickstart.plugins.indent_line'
   -- require 'kickstart.plugins.lint'
   -- require 'kickstart.plugins.autopairs'
   require 'kickstart.plugins.neo-tree'
