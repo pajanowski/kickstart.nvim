@@ -158,6 +158,10 @@ do
   vim.o.list = true
   vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
+  vim.opt.tabstop = 1
+  vim.opt.shiftwidth = 1
+  vim.opt.expandtab = true
+
   -- Preview substitutions live, as you type!
   vim.o.inccommand = 'split'
 
@@ -760,7 +764,15 @@ do
     gopls = {},
     pyright = {},
     tsc = {},
-    --
+    ts_ls = {},
+    svelte = {
+    capabilities = {
+      -- Hint to the server that we support workspace editing
+      workspace = {
+        didChangeConfiguration = { dynamicRegistration = true },
+      },
+    },
+  },
     -- Some languages (like rust) have entire language plugins that can be useful:
     --    https://github.com/mrcjkb/rustaceanvim
     --
@@ -978,6 +990,7 @@ do
   -- Ensure basic parsers are installed
   local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
   require('nvim-treesitter').install(parsers)
+  require('nvim-treesitter.install').prefer_git = true
 
   ---@param buf integer
   ---@param language string
